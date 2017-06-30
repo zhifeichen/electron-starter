@@ -4,14 +4,16 @@ import { Window, TitleBar, Text } from 'react-desktop/windows';
 const remote = require('electron').remote;
 
 export default class extends Component {
-  static defaultProps = {
-    color: '#cc7f29',
-    theme: 'light'
-  };
+  constructor() {
+    super();
+    this.defaultProps = {
+      color: '#cc7f29',
+      theme: 'light',
+    };
+  }
 
   close() {
     const win = remote.getCurrentWindow();
-    console.log(win);
     win.close();
   }
 

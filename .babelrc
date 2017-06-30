@@ -4,7 +4,8 @@
       "targets": { "node": 6, "electron": "1.6.11" },
       "useBuiltIns": true
     }],
-    "react"
+    "react",
+    "stage-2"
   ],
   "plugins": ["transform-class-properties"]
 }

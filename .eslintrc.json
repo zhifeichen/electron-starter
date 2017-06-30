@@ -13,6 +13,7 @@
     "prefer-arrow-callback": "off"
   },
   "globals": {
-    "browser": false /* for webdriver io */
+    "browser": false, /* for webdriver io */
+    "document": false
   }
 }
