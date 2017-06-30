@@ -1,0 +1,18 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "env": {
+    "mocha": true,
+    "node": true
+  },
+  "rules": {
+    "func-names": "off",
+    "prefer-arrow-callback": "off"
+  },
+  "globals": {
+    "browser": false /* for webdriver io */
+  }
+}
