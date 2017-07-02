@@ -18,4 +18,4 @@ document.body.innerHTML = `
   <div id="main" style="width: 100%; height: 100%;"></div>
 `;
 
-ReactDOM.render(<App/>, document.getElementById('main'));
+ReactDOM.render(<App />, document.getElementById('main'));
