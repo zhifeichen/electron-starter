@@ -1,47 +1,50 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Window, TitleBar, Text } from 'react-desktop/windows';
 
 const remote = require('electron').remote;
 
-export default class extends Component {
-  static defaultProps = {
-    color: '#cc7f29',
-    theme: 'dark',
-  };
-
+class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {  isMaximized: false };
+    this.state = { isMaximized: false };
+    this.minimize = this.minimize.bind(this);
+    this.maximize = this.maximize.bind(this);
+    this.unmaximize = this.unmaximize.bind(this);
+    this.toggleMaximize = this.toggleMaximize.bind(this);
+    this.restore = this.restore.bind(this);
+    this.close = this.close.bind(this);
+
+    this.win = remote.getCurrentWindow();
   }
 
   minimize() {
-    remote.getCurrentWindow().minimize();
+    this.win.minimize();
   }
 
   maximize() {
-    remote.getCurrentWindow().maximize();
+    this.win.maximize();
   }
 
   unmaximize() {
-    remote.getCurrentWindow().unmaximize();
+    this.win.unmaximize();
   }
 
   toggleMaximize() {
-    this.setState({ isMaximized: !this.state.isMaximized });
-    if(this.state.isMaximized) {
+    if (!this.state.isMaximized) {
       this.maximize();
     } else {
       this.unmaximize();
     }
+    this.setState({ isMaximized: !this.state.isMaximized });
   }
 
   restore() {
-    remote.getCurrentWindow().restore();
+    this.win.restore();
   }
 
   close() {
-    const win = remote.getCurrentWindow();
-    win.close();
+    this.win.close();
   }
 
   render() {
@@ -56,6 +59,8 @@ export default class extends Component {
         <TitleBar
           title="My Windows Application"
           controls
+          isMaximized={this.state.isMaximized}
+          theme={this.props.theme}
           onCloseClick={this.close}
           onMinimizeClick={this.minimize}
           onMaximizeClick={this.toggleMaximize}
@@ -66,3 +71,15 @@ export default class extends Component {
     );
   }
 }
+
+App.propTypes = {
+  color: PropTypes.string,
+  theme: PropTypes.string,
+};
+
+App.defaultProps = {
+  color: '#cc7f29',
+  theme: 'light',
+};
+
+export default App;
