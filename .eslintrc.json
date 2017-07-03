@@ -11,7 +11,8 @@
   },
   "rules": {
     "func-names": "off",
-    "prefer-arrow-callback": "off"
+    "prefer-arrow-callback": "off",
+    "react/jsx-filename-extension": [1, { "extensions": ["js", "jsx"]}]
   },
   "globals": {
     "browser": false, /* for webdriver io */
